@@ -219,8 +219,8 @@ export default function Nav() {
           <span className="text-vespa">Rentals</span>
         </Link>
 
-        {/* Desktop nav: visible from md up */}
-        <nav className="hidden min-w-0 flex-1 items-center justify-end gap-6 text-sm md:flex">
+        {/* Desktop nav: visible from lg (1024px) up to avoid cramping at 768–1000px */}
+        <nav className="hidden min-w-0 flex-1 items-center justify-end gap-6 text-sm lg:flex">
           {navLink("/motorcycles", "Browse", <IconBike />)}
           {isLoggedIn && (
             <>
@@ -233,11 +233,11 @@ export default function Nav() {
           {desktopAuth}
         </nav>
 
-        {/* Mobile: hamburger */}
+        {/* Hamburger: shown below lg so 768–1000px use menu instead of cramped links */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen((o) => !o)}
-          className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg text-white/90 hover:bg-white/10 md:hidden"
+          className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg text-white/90 hover:bg-white/10 lg:hidden"
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -247,7 +247,7 @@ export default function Nav() {
 
       {/* Mobile menu panel */}
       {mobileMenuOpen && (
-        <div className="border-t border-white/10 bg-[#0b0a0d] md:hidden">
+        <div className="border-t border-white/10 bg-[#0b0a0d] lg:hidden">
           <nav className="container mx-auto flex flex-col gap-1 px-4 py-4">
             <Link
               href="/motorcycles"
