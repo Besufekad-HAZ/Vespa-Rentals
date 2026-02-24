@@ -1,9 +1,13 @@
 import Link from "next/link";
 import SignupForm from "@/components/SignupForm";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export default function SignupPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-[#1a0f0a] via-[#0f0a08] to-[#0a0a0f">
+    <>
+      <Nav />
+    <div className="min-h-[calc(100vh-8rem)] flex flex-col items-center justify-center px-4 py-12">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center">
           <h1 className="text-3xl font-bold font-display">
@@ -25,5 +29,7 @@ export default function SignupPage() {
         </p>
       </div>
     </div>
+      <Footer />
+    </>
   );
 }

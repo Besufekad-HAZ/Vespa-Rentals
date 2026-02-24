@@ -4,6 +4,8 @@ import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { resetPassword } from "@/lib/api";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 function ResetPasswordForm() {
   const searchParams = useSearchParams();
@@ -33,15 +35,16 @@ function ResetPasswordForm() {
     setLoading(true);
     try {
       const data = await resetPassword(token, password, passwordConfirmation);
-      if (data?.user?.token) {
-        const toStore = {
-          user: {
-            data: data.user?.data ?? data.user,
-            token: data.user?.token,
-          },
-        };
-        localStorage.setItem("vespa_user", JSON.stringify(toStore));
-      }
+        if (data?.user?.token) {
+          const toStore = {
+            user: {
+              data: data.user?.data ?? data.user,
+              token: data.user?.token,
+            },
+          };
+          localStorage.setItem("vespa_user", JSON.stringify(toStore));
+          if (typeof window !== "undefined") window.dispatchEvent(new Event("vespa_user_updated"));
+        }
       setSuccess(true);
       setTimeout(() => router.push("/motorcycles"), 2000);
     } catch (err) {
@@ -145,10 +148,14 @@ function ResetPasswordForm() {
 
 export default function ResetPasswordPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-[#1a0f0a] via-[#0f0a08] to-[#0a0a0f">
-      <Suspense fallback={<div className="text-white/60">Loading…</div>}>
-        <ResetPasswordForm />
-      </Suspense>
-    </div>
+    <>
+      <Nav />
+      <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 py-12">
+        <Suspense fallback={<div className="text-white/60">Loading…</div>}>
+          <ResetPasswordForm />
+        </Suspense>
+      </div>
+      <Footer />
+    </>
   );
 }

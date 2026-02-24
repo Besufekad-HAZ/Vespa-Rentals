@@ -1,8 +1,12 @@
 import Link from "next/link";
 import LoginForm from "@/components/LoginForm";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
+    <>
+      <Nav />
     <div className="min-h-screen px-4 py-10 md:py-16">
       <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
         <section className="space-y-6">
@@ -57,5 +61,7 @@ export default function Home() {
         </section>
       </div>
     </div>
+      <Footer />
+    </>
   );
 }

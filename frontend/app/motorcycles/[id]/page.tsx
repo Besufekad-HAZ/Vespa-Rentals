@@ -44,11 +44,11 @@ export default async function MotorcycleDetailPage({
           )}
         </div>
         <div className="p-6">
-          <h1 className="text-2xl font-bold text-white font-display">{motorcycle.name}</h1>
+          <h1 className="text-2xl font-bold text-white" style={{ fontFamily: "var(--font-sora), ui-sans-serif, system-ui" }}>{motorcycle.name}</h1>
           <p className="text-vespa font-semibold">{motorcycle.model}</p>
           {motorcycle.user?.username && (
             <p className="text-sm text-white/50 mt-1">
-              Listed by {motorcycle.user.username}
+              Hosted by {motorcycle.user.username}
             </p>
           )}
           <p className="text-white/80 mt-4 leading-relaxed">

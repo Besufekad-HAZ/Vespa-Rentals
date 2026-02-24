@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { requestPasswordReset } from "@/lib/api";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -26,7 +28,9 @@ export default function ForgotPasswordPage() {
 
   if (sent) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-[#1a0f0a] via-[#0f0a08] to-[#0a0a0f">
+      <>
+        <Nav />
+      <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 py-12">
         <div className="w-full max-w-md text-center space-y-6">
           <div className="rounded-2xl border-2 border-vespa/30 bg-white/5 backdrop-blur p-8">
             <div className="text-5xl mb-4">✉️</div>
@@ -46,11 +50,15 @@ export default function ForgotPasswordPage() {
           </div>
         </div>
       </div>
+        <Footer />
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-[#1a0f0a] via-[#0f0a08] to-[#0a0a0f">
+    <>
+      <Nav />
+    <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 py-12">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold font-display">
@@ -94,5 +102,7 @@ export default function ForgotPasswordPage() {
         </p>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }

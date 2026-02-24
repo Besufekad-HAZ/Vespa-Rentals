@@ -25,6 +25,7 @@ export default function LoginForm() {
         },
       };
       localStorage.setItem("vespa_user", JSON.stringify(toStore));
+      if (typeof window !== "undefined") window.dispatchEvent(new Event("vespa_user_updated"));
       router.push("/motorcycles");
       router.refresh();
     } catch (err) {
