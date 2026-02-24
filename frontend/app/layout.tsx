@@ -1,5 +1,16 @@
 import type { Metadata } from "next";
+import { Inter, Sora } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+});
 
 export const metadata: Metadata = {
   title: "Vespa Rentals | Rent or List Scooters",
@@ -14,7 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#0a0a0f] text-white antialiased">
+      <body
+        className={`${inter.variable} ${sora.variable} min-h-screen bg-[#0b0a0d] text-white antialiased`}
+        style={{ fontFamily: "var(--font-inter), ui-sans-serif, system-ui" }}
+      >
         {children}
       </body>
     </html>

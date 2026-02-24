@@ -1,6 +1,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
+  def sign_up_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+
   def respond_with(resource, _opts = {})
     if request.method == 'POST' && resource.persisted?
       current_token = request.env['warden-jwt_auth.token']

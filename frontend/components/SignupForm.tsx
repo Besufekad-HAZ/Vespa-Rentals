@@ -37,7 +37,7 @@ export default function SignupForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="username" className="block text-sm text-white/70 mb-1">
+        <label htmlFor="username" className="block text-sm font-medium text-white/80 mb-1">
           Username
         </label>
         <input
@@ -46,12 +46,12 @@ export default function SignupForm() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-white/40 focus:border-[#00ff99] focus:outline-none"
+          className="input-vespa w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/40 outline-none transition"
           placeholder="johndoe"
         />
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm text-white/70 mb-1">
+        <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">
           Email
         </label>
         <input
@@ -60,12 +60,12 @@ export default function SignupForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-white/40 focus:border-[#00ff99] focus:outline-none"
+          className="input-vespa w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/40 outline-none transition"
           placeholder="you@example.com"
         />
       </div>
       <div>
-        <label htmlFor="password" className="block text-sm text-white/70 mb-1">
+        <label htmlFor="password" className="block text-sm font-medium text-white/80 mb-1">
           Password
         </label>
         <input
@@ -75,14 +75,14 @@ export default function SignupForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={6}
-          className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-white/40 focus:border-[#00ff99] focus:outline-none"
+          className="input-vespa w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/40 outline-none transition"
         />
       </div>
       {error && <p className="text-sm text-red-400">{error}</p>}
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-lg bg-[#00ff99] text-[#0a0a0f] font-medium py-2 px-4 hover:bg-[#00e187] transition-colors disabled:opacity-50"
+        className="btn-vespa w-full rounded-xl font-semibold py-3 px-4 disabled:opacity-50"
       >
         {loading ? "Creating account…" : "Sign up"}
       </button>

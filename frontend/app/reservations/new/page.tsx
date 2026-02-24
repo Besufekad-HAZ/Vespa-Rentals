@@ -64,21 +64,19 @@ export default function NewReservationPage() {
 
   return (
     <div className="max-w-lg mx-auto">
-      <Link href="/reservations" className="text-white/60 hover:text-[#00ff99] text-sm">
+      <Link href="/reservations" className="text-white/60 hover:text-vespa text-sm font-medium transition-colors inline-block">
         ← Reservations
       </Link>
-      <h1 className="text-2xl font-bold text-white mt-4">New reservation</h1>
-      <form onSubmit={handleSubmit} className="glass rounded-xl p-6 mt-6 space-y-4">
+      <h1 className="text-3xl font-bold text-white font-display mt-4">New reservation</h1>
+      <form onSubmit={handleSubmit} className="glass rounded-2xl border-vespa/20 p-6 mt-6 space-y-4">
         <div>
-          <label htmlFor="motorcycle_id" className="block text-sm text-white/70 mb-1">
-            Motorcycle
-          </label>
+          <label htmlFor="motorcycle_id" className="block text-sm font-medium text-white/80 mb-1">Motorcycle</label>
           <select
             id="motorcycle_id"
             value={motorcycleId}
             onChange={(e) => setMotorcycleId(e.target.value)}
             required
-            className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white focus:border-[#00ff99] focus:outline-none"
+            className="input-vespa w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white outline-none transition"
           >
             <option value="">Select a motorcycle</option>
             {motorcycles.map((m) => (
@@ -89,15 +87,13 @@ export default function NewReservationPage() {
           </select>
         </div>
         <div>
-          <label htmlFor="city" className="block text-sm text-white/70 mb-1">
-            City
-          </label>
+          <label htmlFor="city" className="block text-sm font-medium text-white/80 mb-1">City</label>
           <select
             id="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
-            className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white focus:border-[#00ff99] focus:outline-none"
+            className="input-vespa w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white outline-none transition"
           >
             <option value="">Select city</option>
             {CITIES.map((c) => (
@@ -108,36 +104,32 @@ export default function NewReservationPage() {
           </select>
         </div>
         <div>
-          <label htmlFor="start_date" className="block text-sm text-white/70 mb-1">
-            Start date
-          </label>
+          <label htmlFor="start_date" className="block text-sm font-medium text-white/80 mb-1">Start date</label>
           <input
             id="start_date"
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
             required
-            className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white focus:border-[#00ff99] focus:outline-none"
+            className="input-vespa w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white outline-none transition"
           />
         </div>
         <div>
-          <label htmlFor="end_date" className="block text-sm text-white/70 mb-1">
-            End date
-          </label>
+          <label htmlFor="end_date" className="block text-sm font-medium text-white/80 mb-1">End date</label>
           <input
             id="end_date"
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
             required
-            className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white focus:border-[#00ff99] focus:outline-none"
+            className="input-vespa w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white outline-none transition"
           />
         </div>
         {error && <p className="text-sm text-red-400">{error}</p>}
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-lg bg-[#00ff99] text-[#0a0a0f] font-medium py-2 px-4 hover:bg-[#00e187] transition-colors disabled:opacity-50"
+          className="btn-vespa w-full rounded-xl font-semibold py-3 px-4 disabled:opacity-50"
         >
           {loading ? "Booking…" : "Create reservation"}
         </button>

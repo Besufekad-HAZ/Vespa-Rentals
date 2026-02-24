@@ -33,7 +33,7 @@ export default function ReservationsPage() {
     return (
       <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-6 text-red-400">
         {error}
-        <Link href="/motorcycles" className="mt-4 inline-block text-[#00ff99]">
+        <Link href="/motorcycles" className="mt-4 inline-block text-vespa font-medium">
           ← Back
         </Link>
       </div>
@@ -43,10 +43,10 @@ export default function ReservationsPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-white">My reservations</h1>
+        <h1 className="text-3xl font-bold text-white font-display">My reservations</h1>
         <Link
           href="/reservations/new"
-          className="rounded-lg bg-[#00ff99] text-[#0a0a0f] font-medium py-2 px-4 hover:bg-[#00e187] transition-colors"
+          className="btn-vespa rounded-xl font-semibold py-2.5 px-5"
         >
           New booking
         </Link>
@@ -54,7 +54,7 @@ export default function ReservationsPage() {
       {list.length === 0 ? (
         <div className="glass rounded-xl p-8 text-center text-white/60">
           <p>No reservations yet.</p>
-          <Link href="/reservations/new" className="mt-4 inline-block text-[#00ff99] hover:underline">
+          <Link href="/reservations/new" className="mt-4 inline-block text-vespa hover:text-vespa-light font-medium transition-colors">
             Book a motorcycle
           </Link>
         </div>
@@ -75,7 +75,7 @@ export default function ReservationsPage() {
               </div>
               <Link
                 href={`/motorcycles/${r.motorcycle_id}`}
-                className="text-sm text-[#00ff99] hover:underline"
+                className="text-sm text-vespa hover:text-vespa-light font-medium transition-colors"
               >
                 View bike
               </Link>

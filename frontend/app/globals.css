@@ -1,37 +1,100 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #ededed;
-  --primary: #0a0a0f;
-  --primary-light: #1c1c22;
-  --accent: #00ff99;
-  --accent-hover: #00e187;
+  --background: #0b0a0d;
+  --foreground: #f4f4f5;
+  --vespa: #d84800;
+  --vespa-light: #f3700c;
+  --vespa-soft: #ff9f59;
+  --vespa-dark: #a83800;
+  --vespa-glow: rgba(243, 112, 12, 0.28);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-accent: var(--accent);
+  --color-vespa: var(--vespa);
+  --color-vespa-light: var(--vespa-light);
+  --color-vespa-soft: var(--vespa-soft);
+  --color-vespa-dark: var(--vespa-dark);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: ui-monospace, monospace;
   min-height: 100vh;
+  color: var(--foreground);
+  background:
+    radial-gradient(80% 60% at 0% 0%, rgba(216, 72, 0, 0.2), transparent 60%),
+    radial-gradient(60% 40% at 100% 100%, rgba(243, 112, 12, 0.12), transparent 60%),
+    var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Portfolio-style glass card */
 .glass {
-  background: rgba(28, 28, 34, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
+  background: rgba(23, 21, 30, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.32);
 }
 
 .glass:hover {
-  border-color: rgba(0, 255, 153, 0.3);
-  box-shadow: 0 0 20px rgba(0, 255, 153, 0.1);
+  border-color: rgba(216, 72, 0, 0.35);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.36), 0 0 24px var(--vespa-glow);
+}
+
+.input-vespa {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111827;
+}
+
+.input-vespa::placeholder {
+  color: #6b7280;
+}
+
+.input-vespa:focus {
+  border-color: var(--vespa);
+  box-shadow: 0 0 0 3px rgba(216, 72, 0, 0.28);
+}
+
+.btn-vespa {
+  background: linear-gradient(135deg, var(--vespa-light) 0%, var(--vespa) 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 26px rgba(216, 72, 0, 0.35);
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+}
+
+.btn-vespa:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 14px 30px rgba(216, 72, 0, 0.4);
+}
+
+.btn-vespa:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vespa);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vespa-light);
 }

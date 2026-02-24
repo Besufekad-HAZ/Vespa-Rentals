@@ -24,8 +24,8 @@ export default function Nav() {
       href={href}
       className={
         pathname === href
-          ? "text-[#00ff99] font-medium"
-          : "text-white/70 hover:text-[#00ff99] transition-colors"
+          ? "text-vespa font-semibold"
+          : "text-white/70 hover:text-vespa transition-colors"
       }
     >
       {label}
@@ -33,13 +33,13 @@ export default function Nav() {
   );
 
   return (
-    <header className="border-b border-white/10 sticky top-0 z-50 bg-[#0a0a0f]/90 backdrop-blur">
-      <div className="container mx-auto px-4 flex items-center justify-between h-14">
-        <Link href="/motorcycles" className="text-xl font-bold">
+    <header className="border-b border-white/10 sticky top-0 z-50 bg-[#0a0a0f]/95 backdrop-blur-md">
+      <div className="container mx-auto px-4 flex items-center justify-between h-16">
+        <Link href="/motorcycles" className="text-xl font-bold font-display tracking-tight">
           <span className="text-white">Vespa</span>
-          <span className="text-[#00ff99]">Rentals</span>
+          <span className="text-vespa">Rentals</span>
         </Link>
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-6 text-sm">
           {link("/motorcycles", "Browse")}
           {isLoggedIn && (
             <>
@@ -50,7 +50,7 @@ export default function Nav() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="text-white/70 hover:text-red-400 transition-colors text-sm"
+                className="text-white/70 hover:text-red-400 transition-colors font-medium"
               >
                 Logout
               </button>

@@ -17,9 +17,9 @@ export default async function MotorcycleDetailPage({
 
   if (!motorcycle) {
     return (
-      <div className="rounded-lg border border-white/10 bg-white/5 p-8 text-center">
+      <div className="glass rounded-2xl p-8 text-center">
         <p className="text-white/70">Motorcycle not found.</p>
-        <Link href="/motorcycles" className="mt-4 inline-block text-[#00ff99] hover:underline">
+        <Link href="/motorcycles" className="mt-4 inline-block text-vespa hover:text-vespa-light font-medium transition-colors">
           ← Back to list
         </Link>
       </div>
@@ -28,11 +28,11 @@ export default async function MotorcycleDetailPage({
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
-      <Link href="/motorcycles" className="text-white/60 hover:text-[#00ff99] text-sm transition-colors">
+      <Link href="/motorcycles" className="text-white/60 hover:text-vespa text-sm font-medium transition-colors inline-block">
         ← Back to list
       </Link>
-      <div className="glass rounded-xl overflow-hidden">
-        <div className="aspect-video bg-white/5 flex items-center justify-center">
+      <div className="glass rounded-2xl overflow-hidden border-vespa/20">
+        <div className="aspect-video bg-white/5 flex items-center justify-center overflow-hidden">
           {motorcycle.photo ? (
             <img
               src={motorcycle.photo}
@@ -44,8 +44,8 @@ export default async function MotorcycleDetailPage({
           )}
         </div>
         <div className="p-6">
-          <h1 className="text-2xl font-bold text-white">{motorcycle.name}</h1>
-          <p className="text-[#00ff99] font-medium">{motorcycle.model}</p>
+          <h1 className="text-2xl font-bold text-white font-display">{motorcycle.name}</h1>
+          <p className="text-vespa font-semibold">{motorcycle.model}</p>
           {motorcycle.user?.username && (
             <p className="text-sm text-white/50 mt-1">
               Listed by {motorcycle.user.username}
@@ -57,7 +57,7 @@ export default async function MotorcycleDetailPage({
           <div className="mt-6">
             <Link
               href={`/reservations/new?motorcycle_id=${motorcycle.id}`}
-              className="inline-flex items-center justify-center rounded-lg bg-[#00ff99] text-[#0a0a0f] font-medium py-2 px-5 hover:bg-[#00e187] transition-colors"
+              className="btn-vespa inline-flex items-center justify-center rounded-xl font-semibold py-3 px-6"
             >
               Reserve this bike
             </Link>

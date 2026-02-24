@@ -26,6 +26,44 @@ export async function login(email: string, password: string) {
   return res.json();
 }
 
+/** Request password reset email (forgot password) */
+export async function requestPasswordReset(email: string) {
+  const res = await fetch(`${API_URL}/password`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ user: { email } }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err?.message || "Request failed");
+  }
+  return res.json();
+}
+
+/** Reset password with token from email */
+export async function resetPassword(
+  resetPasswordToken: string,
+  password: string,
+  passwordConfirmation: string
+) {
+  const res = await fetch(`${API_URL}/password`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      user: {
+        reset_password_token: resetPasswordToken,
+        password,
+        password_confirmation: passwordConfirmation,
+      },
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err?.message || "Reset failed");
+  }
+  return res.json();
+}
+
 export async function signup(username: string, email: string, password: string) {
   const res = await fetch(`${API_URL}/signup`, {
     method: "POST",
