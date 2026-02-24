@@ -36,10 +36,10 @@ export default function Footer() {
   const showAuthLinks = mounted && !loggedIn;
 
   return (
-    <footer className="mt-auto border-t border-white/10 bg-[#0b0a0d]/80">
-      <div className="container mx-auto px-4 py-10">
+    <footer className="mt-auto w-full min-w-0 overflow-x-hidden border-t border-white/10 bg-[#0b0a0d]/80">
+      <div className="container mx-auto min-w-0 max-w-[100vw] px-4 py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <div>
+          <div className="min-w-0">
             <Link
               href="/motorcycles"
               className="text-lg font-bold"

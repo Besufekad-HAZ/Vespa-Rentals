@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${sora.variable} min-h-screen bg-[#0b0a0d] text-white antialiased`}
+        className={`${inter.variable} ${sora.variable} min-h-screen overflow-x-hidden bg-[#0b0a0d] text-white antialiased`}
         style={{ fontFamily: "var(--font-inter), ui-sans-serif, system-ui" }}
       >
         {children}

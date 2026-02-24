@@ -34,7 +34,7 @@ export default function NewMotorcyclePage() {
   };
 
   return (
-    <div className="max-w-lg mx-auto">
+    <div className="w-full min-w-0 max-w-lg mx-auto px-0">
       <Link href="/motorcycles/my" className="text-white/60 hover:text-vespa text-sm font-medium transition-colors inline-block">
         ← My motorcycles
       </Link>

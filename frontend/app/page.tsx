@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <>
       <Nav />
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden">
       {/* Background image with overlay */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat min-h-[100dvh]"
         style={{
           backgroundImage: "linear-gradient(to right, rgba(11,10,13,0.92) 0%, rgba(11,10,13,0.75) 45%, rgba(11,10,13,0.6) 100%), url('https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=1920&q=80')",
         }}
@@ -24,9 +24,9 @@ export default function Home() {
         }}
         aria-hidden
       />
-      <div className="relative z-10 min-h-screen px-4 py-10 md:py-16">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-        <section className="space-y-6">
+      <div className="relative z-10 min-h-screen w-full min-w-0 px-4 py-10 md:py-16">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-10 lg:items-center">
+        <section className="min-w-0 space-y-6">
           <p className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-white/70">
             Premium Urban Rentals
           </p>
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="glass rounded-2xl border border-white/15 p-6 sm:p-8">
+        <section className="glass min-w-0 rounded-2xl border border-white/15 p-4 sm:p-6 lg:p-8">
           <div className="mb-6 text-center">
             <h2
               className="text-3xl font-semibold text-white"

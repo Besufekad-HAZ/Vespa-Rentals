@@ -7,8 +7,8 @@ export default function SignupPage() {
   return (
     <>
       <Nav />
-    <div className="min-h-[calc(100vh-8rem)] flex flex-col items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md space-y-6">
+    <div className="min-h-[calc(100vh-8rem)] w-full min-w-0 flex flex-col items-center justify-center px-4 py-12 overflow-x-hidden">
+      <div className="w-full max-w-md min-w-0 space-y-6">
         <div className="text-center">
           <h1 className="text-3xl font-bold font-display">
             <span className="text-white">Create </span>

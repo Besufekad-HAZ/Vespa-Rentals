@@ -9,7 +9,7 @@ export default function AccountLayout({
   return (
     <>
       <Nav />
-      <main className="container mx-auto px-4 py-8 min-h-[calc(100vh-8rem)]">{children}</main>
+      <main className="container mx-auto min-w-0 max-w-[100vw] px-4 py-8 min-h-[calc(100vh-8rem)]">{children}</main>
       <Footer />
     </>
   );
