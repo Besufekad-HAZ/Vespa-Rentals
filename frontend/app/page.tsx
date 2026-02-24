@@ -7,7 +7,24 @@ export default function Home() {
   return (
     <>
       <Nav />
-    <div className="min-h-screen px-4 py-10 md:py-16">
+    <div className="relative min-h-screen">
+      {/* Background image with overlay */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "linear-gradient(to right, rgba(11,10,13,0.92) 0%, rgba(11,10,13,0.75) 45%, rgba(11,10,13,0.6) 100%), url('https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=1920&q=80')",
+        }}
+        aria-hidden
+      />
+      {/* Warm orange glow behind hero (top-left) */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 80% 70% at 0% 0%, rgba(243,112,12,0.22) 0%, rgba(216,72,0,0.08) 40%, transparent 70%)",
+        }}
+        aria-hidden
+      />
+      <div className="relative z-10 min-h-screen px-4 py-10 md:py-16">
       <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
         <section className="space-y-6">
           <p className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.2em] text-white/70">
@@ -59,6 +76,7 @@ export default function Home() {
             </Link>
           </div>
         </section>
+      </div>
       </div>
     </div>
       <Footer />
