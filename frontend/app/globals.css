@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #ededed;
+  --primary: #0a0a0f;
+  --primary-light: #1c1c22;
+  --accent: #00ff99;
+  --accent-hover: #00e187;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: ui-monospace, monospace;
+  min-height: 100vh;
+}
+
+/* Portfolio-style glass card */
+.glass {
+  background: rgba(28, 28, 34, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+}
+
+.glass:hover {
+  border-color: rgba(0, 255, 153, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.1);
+}
