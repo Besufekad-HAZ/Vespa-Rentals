@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: "Vespa Rentals | Rent or List Scooters",
   description:
     "Rent a Vespa for the day or list your own. Browse, reserve, and manage motorcycle rentals.",
+  icons: { icon: "/icon.svg" },
 };
 
 export default function RootLayout({

@@ -4,6 +4,15 @@ Use **your** credentials and **your** GitHub/deploy URLs. Below is a minimal che
 
 ---
 
+## Deploy order (recommended)
+
+1. **Push your code** to GitHub (this repo or a copy under your account).
+2. **Deploy the backend first** (Render / Railway) so you get the API URL.
+3. **Deploy the frontend** (Vercel) and set `NEXT_PUBLIC_API_URL` to the backend URL.
+4. **Set `FRONTEND_URL`** on the backend to your Vercel URL (for CORS), then redeploy the backend.
+
+---
+
 ## 1. Monorepo location
 
 The app lives at:
@@ -19,30 +28,31 @@ You can either:
 
 ---
 
-## 2. Backend (Rails) — e.g. Render / Railway
+## 2. Backend (Rails) — Render or Railway
 
-1. **Create a new Web Service** and connect the repo (or the `vespa-rentals/backend` folder if your platform supports subfolder deploy).
-2. **Build command:** `bundle install && rails db:migrate` (or `bin/rails db:create db:migrate` on first deploy).
-3. **Start command:** `rails s -p $PORT` or `bundle exec puma -C config/puma.rb`.
-4. **Environment variables (use your values):**
-   - `DATABASE_URL` — from your host (Render/Railway provide this).
-   - `SECRET_KEY_BASE` — run `rails secret` and paste.
-   - `FRONTEND_URL` — your frontend URL, e.g. `https://vespa-rentals.vercel.app` (for CORS). No trailing slash.
-5. **Optional:** If you use a separate JWT secret, set `JWT_SECRET_KEY` (or whatever your `devise-jwt` config expects).
+1. **Create a new Web Service** and connect your GitHub repo.
+2. **Root directory (if monorepo):** Set to `backend` (so the service builds from `vespa-rentals/backend`).
+3. **Build command:** `bundle install && rails db:migrate` (first time: `bundle install && bin/rails db:create db:migrate`).
+4. **Start command:** `bundle exec puma -C config/puma.rb` or `rails s -p $PORT`.
+5. **Environment variables:**
+   - `DATABASE_URL` — provided by Render/Railway when you add a PostgreSQL database; otherwise set your own connection string.
+   - `SECRET_KEY_BASE` — run `cd backend && rails secret` and paste the value.
+   - `FRONTEND_URL` — set after frontend is live, e.g. `https://your-app.vercel.app` (no trailing slash). Required for CORS.
+6. **Optional:** If your app uses a separate JWT secret, set `JWT_SECRET_KEY` (or the key your `devise-jwt` config expects).
 
-After deploy, note the backend URL (e.g. `https://vespa-rentals-api.onrender.com`).
+After deploy, copy the backend URL (e.g. `https://vespa-rentals-api.onrender.com`).
 
 ---
 
-## 3. Frontend (Next.js) — e.g. Vercel
+## 3. Frontend (Next.js) — Vercel
 
-1. **Create a new project** and connect the same repo (or the repo that contains `vespa-rentals/frontend`).
-2. **Root directory:** Set to `vespa-rentals/frontend` (if the repo is the monorepo).
+1. **Create a new project** at [vercel.com](https://vercel.com) and import your GitHub repo.
+2. **Root directory:** Set to `frontend` (so Vercel builds from `vespa-rentals/frontend`).
 3. **Environment variable:**
    - `NEXT_PUBLIC_API_URL` = your backend URL from step 2 (e.g. `https://vespa-rentals-api.onrender.com`). No trailing slash.
-4. **Build / start:** Default (`pnpm build` / `next start` or `npm run build` / `npm start`) is fine.
+4. **Build / start:** Leave default (Vercel uses `npm run build` / `npm run start` or your package manager).
 
-After deploy, note the frontend URL (e.g. `https://vespa-rentals.vercel.app`).
+After deploy, copy the frontend URL (e.g. `https://vespa-rentals.vercel.app`).
 
 ---
 
