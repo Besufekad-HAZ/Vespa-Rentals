@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { getMotorcycles, createReservation } from "@/lib/api";
@@ -15,7 +15,7 @@ const CITIES = [
   "Philadelphia",
 ];
 
-export default function NewReservationPage() {
+function NewReservationForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const preselectedId = searchParams.get("motorcycle_id");
@@ -64,7 +64,10 @@ export default function NewReservationPage() {
 
   return (
     <div className="max-w-lg mx-auto">
-      <Link href="/reservations" className="text-white/60 hover:text-vespa text-sm font-medium transition-colors inline-block">
+      <Link
+        href="/reservations"
+        className="text-white/60 hover:text-vespa text-sm font-medium transition-colors inline-block"
+      >
         ← Reservations
       </Link>
       <h1 className="text-3xl font-bold text-white font-display mt-4">New reservation</h1>
@@ -135,5 +138,21 @@ export default function NewReservationPage() {
         </button>
       </form>
     </div>
+  );
+}
+
+export default function NewReservationPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="max-w-lg mx-auto">
+          <div className="glass rounded-2xl border-vespa/20 p-6 mt-6 text-center text-white/70">
+            Loading reservation form…
+          </div>
+        </div>
+      }
+    >
+      <NewReservationForm />
+    </Suspense>
   );
 }
